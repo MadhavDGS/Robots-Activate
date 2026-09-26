@@ -1,6 +1,13 @@
 #include <Bluepad32.h>
+#include "soc/soc.h"          // ESP32 power control
+#include "soc/rtc_cntl_reg.h" // ESP32 brownout detector register
 
 ControllerPtr myControllers[BP32_MAX_GAMEPADS];
+
+// ── ONBOARD STATUS LED ───────────────────────────────────────────────────────
+// Most ESP32 boards have an onboard blue LED on GPIO 2.
+// Lights up solid when gamepad is connected (great for testing without PC!)
+const int LED_STATUS = 2;
 
 // ── MOTOR PINS (All on the RIGHT side of 38-pin ESP32 NodeMCU) ───────────────
 // Clustered together on the exact same side as 30D (GPIO 32, 33, 25, 26):
@@ -158,6 +165,7 @@ void onConnectedController(ControllerPtr ctl) {
       Serial.printf("Model: %s, VID=0x%04x, PID=0x%04x\n",
                     ctl->getModelName().c_str(), p.vendor_id, p.product_id);
       myControllers[i] = ctl;
+      digitalWrite(LED_STATUS, HIGH); // Solid ON when connected!
       // Welcome rumble (short double buzz)
       ctl->playDualRumble(0 /* delay */, 150 /* duration */, 180 /* weak */, 180 /* strong */);
       return;
@@ -171,6 +179,7 @@ void onDisconnectedController(ControllerPtr ctl) {
     if (myControllers[i] == ctl) {
       Serial.printf("Controller disconnected from index=%d\n", i);
       myControllers[i] = nullptr;
+      digitalWrite(LED_STATUS, LOW);
       Stop();
       return;
     }
@@ -318,6 +327,16 @@ void processControllers() {
 
 // ── SETUP ────────────────────────────────────────────────────────────────────
 void setup() {
+  // 1. Disable hardware brownout detector (prevents resets on 5V battery/buck converter transients)
+  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
+
+  // 2. Allow 5V power rail to fully charge decoupling caps and stabilize
+  delay(800);
+
+  // 3. Status LED setup (GPIO 2)
+  pinMode(LED_STATUS, OUTPUT);
+  digitalWrite(LED_STATUS, LOW);
+
   Serial.begin(115200);
   Serial.printf("Firmware: %s\n", BP32.firmwareVersion());
   const uint8_t *addr = BP32.localBdAddress();
@@ -366,6 +385,21 @@ void loop() {
 
   if (BP32.update()) {
     processControllers();
+  }
+
+  // Visual Status LED: Blinking = waiting for gamepad, Solid ON = Gamepad connected
+  static unsigned long lastBlink = 0;
+  bool anyConnected = false;
+  for (auto ctl : myControllers) {
+    if (ctl && ctl->isConnected()) anyConnected = true;
+  }
+  if (!anyConnected) {
+    if (millis() - lastBlink >= 400) {
+      lastBlink = millis();
+      digitalWrite(LED_STATUS, !digitalRead(LED_STATUS)); // Blink while searching
+    }
+  } else {
+    digitalWrite(LED_STATUS, HIGH); // Solid ON when paired!
   }
 
   // Continuous micro-slew rate limiter (protects ESP32 from brownouts)

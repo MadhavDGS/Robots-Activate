@@ -1,0 +1,269 @@
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+SmartElex 30D Smart Motor
+Driver
+1
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+INDEX
+1) Introduction
+2) Features
+3) Overview
+4) Specifications
+5) Dimensions
+6) Connections/Wiring
+7) Control Mode
+10) Warranty
+2
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Introduction:
+SmartElex 30D is a dual channel motor driver capable of supplying 30
+amps continuous with peak currents up to 85 amps (2Sec) per channel. It can
+be operated from radio control, analog, TTL serial and PWM. A variety of
+operating modes including with mixed and independent mode in radio
+control, analog and in PWM mode. Operating modes allow for operation,
+such as switching between radio controls and PWM mode or switching
+between any of 4 modes via 4 position DPDT mode switch. MOSFETs are
+switched at 16 KHz to ensure quiet operation and no annoying whining
+sound. Besides, it also equipped with a microcontroller unit to provide smart
+features such as multiple input modes and current limit and thermal
+protection. If temperature of board is reaches 80 degree then motor speed
+becomes half and speed will be normal once temperature reaches below 80
+degree. Motor driver will be shut down at 100 degree.
+3
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Features:
+• Supplying 30 amps continuous with peak currents up to 85 amps (2
+Sec) per channel
+• Support motor voltage from 7V to 28.
+• On board Low Internal resistance MOSFETs are switched at 16 KHz
+frequency.
+• Over current protection and indication.
+• Thermal protection.
+• Multiple input modes: RC, Analog, PWM, Serial Packetized.
+• On board push buttons for test and manual operation.
+4
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Overview:
+ON/OFF
+I/P Logic Select
+ON/OFF: Power ON and Power OFF Switch
+Power Input: Connect to a 7V-28V Battery or Power Supply.
+Motor 1 and Motor 2 Terminal: Connect Motor 1 to Motor 1 Terminal. Connect
+Motor 2 Motor 2 Terminal.
+Mode Selection: These are used to set the operating mode and options.
+Error (ERR) and Over Current (OC) LEDs: Error LED glows when Under
+Voltage Lockout (Input Voltage less than 7V) .Overcurrent LEDs glows due to
+current greater than 85 AMP.
+RC Input: 2 channel Radio Controller receiver connected to these pins.
+I/P Logic Select: For 3V3 Logic- Place Jumpers
+For 5V Logic- Keep Open
+5
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+6
+Specifications:
+Sr.No Parameter Min Max Unit
+1 Input Voltage 7 28 V
+2 Maximum Continuous Current Imax - 30 A
+3 Peak Motor Current for 10 Sec - 85 A
+4 VIOH (Logic Input – High Level) 3 5.5 V
+5 VIOL (Logic Input – Low Level) 0 0.5 V
+6 PWM frequency - 490 Hz
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Dimensions:
+7
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Connections/Wiring:
+SmartElex 30D can be used with power supplies or batteries. Input power is connected to
+the center power terminals labeled VIN and GND. The input voltage range is 7V to 28V. The
+input current is dependent on the motors being used and the load placed upon them.
+As a general rule of thumb, you should use the thickest wire that is practical to make power
+connections, especially on the battery leads. Using undersized wire will lead to the wire
+getting hot, and can lead to elevated temperatures on the SmartElex 30D as well.
+The main power connections to the SmartElex 30D are on the rear edge of the board.
+Connections are made to large black screw terminals. These terminals will accept 10 to 28
+gauge wire. Using stranded wire it is possible to run twinned 10 gauge wire connections to
+the battery terminals. This is often a good idea if your design will be running both motors
+near or above the 30 amp continuous limit. For the motor connections, single 12 gauge wires
+should be sufficient for all applications.
+8
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Control Mode:
+SmartElex 30D supports four different types of input mode:
+1. Radio Control (RC)
+2. Microcontroller PWM.
+3. Analog
+4. Serial USB.
+The DIP switch settings for each mode and the function for input pin are
+summarized on the table below.
+Mode Mode Name DIP Switch
+Sw1 Sw2 Sw3 Sw4
+0 Test Mode 0 0 0 0
+1 RC Liner Independent 0 0 0 1
+2 Analog Liner Independent 0 0 1 0
+3 PWM Liner Independent 0 0 1 1
+4 Serial 9600 0 1 0 0
+5 RC Exponential Independent 0 1 0 1
+6 Analog Exponential Independent 0 1 1 0
+7 PWM Exponential Independent 0 1 1 1
+8 Serial 115200 1 0 0 0
+9 RC Linear Mixed 1 0 0 1
+10 Analog Linear Mixed 1 0 1 0
+11 PWM Linear Mixed 1 0 1 1
+12 RC Exponential Mixed 1 1 0 0
+13 Analog Exponential Mixed 1 1 0 1
+14 PWM Exponential Mixed 1 1 1 0
+15 Test Mode 1 1 1 1
+9
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+1. Radio Control (RC) Mode:
+In this mode, Speed and direction of Motor is controlled by RC1 and RC2
+channel of receiver or anything that can generate servo signals can be used to
+drive a SmartElex 30D in Radio Control mode.
+Mode
+RC
+Independent Linear Mode
+RC1 control Speed(Linear) and Direction of Motor 1
+RC2 control Speed(Linear) and Direction of Motor 2
+Independent Exponential Mode
+RC1 control Speed(Exponential) and Direction of Motor 1
+RC2 control Speed (Exponential) and Direction of Motor 2
+Mixed Linear Mode
+RC1 control Speed (Linear) in Forward and Reverse Direction of Motor1
+and Motor 2 Simultaneously.
+RC2 control Speed (Linear) in Left and Right Direction of Motor 1 and
+Motor 2 Simultaneously.
+Mixed Exponential Mode
+RC1 control Speed (Exponential) in Forward and Reverse Direction of
+Motor 1 and Motor 2 Simultaneously.
+RC2 control Speed (Exponential) in Left and Right Direction of Motor 1
+and Motor 2 Simultaneously.
+10
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+Sample Connection Diagram of RC receiver and motor with SmartElex
+30D.
+11
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+2. PWM Mode:
+I. Mixed PWM Mode:
+Direction of motor
+PWM Pin Input PWM Range Speed/Acceleration
+of Motor
+Motor 1
+Motor2
+Bot
+Direction
+Direction
+Direction
+PWM2(S2) 5% to 40% 100% to 0% Counterclockwise Counterclockwise Reverse
+PWM2(S2) 57% to 92% 0% to 100% clockwise clockwise Forward
+PWM1(S1) 5% to 40% 100% to 0% Counterclockwise clockwise Left
+PWM1(S1) 57% to 92% 0% to 100% clockwise Counterclockwise Right
+If PWM is less than 5% Speed of motor is 100%
+If PWM is greater than 92% speed of motor is 0%
+12
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+II. Independent PWM Mode:
+Direction Pin
+Direction of motor
+Input PWM
+Speed/Acceleration
+PWM Pin
+DIR1 DIR2 Range
+of Motor
+Motor 1
+Direction
+Motor2
+Direction
+PWM1(S1) HIGH x 8% to 94% 8% to 100% clockwise x
+PWM1(S1) LOW x 8% to 94% 8% to 100% counterclockwise x
+PWM2(S2) x HIGH 8% to 94% 8% to 100% x clockwise
+PWM2(S2) x LOW 8% to 94% 8% to 100% x counterclockwise
+If PWM is less than 8% Speed of motor is 0%
+If PWM is greater than 94% speed of motor is 100%
+13
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+3. Analog Mode:
+In Analog input mode, the speed and direction of the motor is controlled by the
+analog voltage. Analog Input voltage range is from 0V to 5V OR 0 to 3.3V.
+I. Independent Analog Mode:
+Direction Of Motor
+Analog
+Input range
+Input range
+Speed of
+Motor 1
+Motor 2
+Pin
+(0-3.3V)
+(0-5V)
+Motor
+Direction
+Direction
+ANG1(S1) 1.45V to 0.165V 2.2V to 0.25V 10% to
+100% Counterclockwise x
+1.45V to 1.84V 2.21V to 2.79V 0%(dead
+band) Stopped x
+1.84V to 3.168V 2.8V to 4.8V 10% to
+100% clockwise x
+ANG2(S2) 1.45V to 0.165V 2.2V to 0.25 10% to
+100% x Counterclockwise
+1.45V to 1.84V 2.21V to 2.79V 0%(dead
+band) x Stopped
+1.84V to 3.168V 2.8V to 4.8V 10% to
+100% x clockwise
+Note: If Analog voltage is less than 0.25V (0.165 for 3.3V) and greater than 4.8V(3.168 for 3.3V) then
+Motor speed is 100%
+II. Mixed Analog Mode:
+Direction Of Motor
+Analog
+Input range
+Pin
+(0-3.3V)
+Input range
+(0-5V) Speed of Motor
+Motor 1 Direction Motor 2 Direction Bot Direction
+ANG1(S1) 1.45V to 0.165V 2.2V to 0.25 10% to 100% Counterclockwise Counterclockwise Reverse
+1.45V to 1.84V 2.21V to 2.79V 0%(dead band) Stopped Stopped Stopped
+1.84V to 3.168V 2.8V to 4.8V 10% to 100% clockwise clockwise Forward
+ANG2(S2) 1.45V to 0.165V 2.2V to 0.25 10% to 100% Counterclockwise clockwise Left
+1.45V to 1.84V 2.21V to 2.79V 0%(dead band) Stopped Stopped Stopped
+1.84V to 3.168V 2.8V to 4.8V 10% to 100% clockwise Counterclockwise Right
+Note: If Analog voltage is less than 0.25V (0.165 for 3.3V) and greater than 4.8V(3.168 for 3.3V) then Motor speed is 100%
+14
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+4. Serial Mode:
+In Serial mode, connect motor driver board with PC using USB and open Serial terminal software like
+Putty (Recommended). In seral Tab select COM port and Baud rate (Supported baud rates are
+9600,115200) and use following steps.
+STEP 1 – Enter '*' for Configuration
+STEP 2 – Enter '1' for Motor1 Forward
+'0' for Motor1 Reverse
+STEP 3 – Enter '0-9' for Motor1 speed 0% to 100%
+STEP 4 – Enter '1' for Motor2 Forward
+'0' for Motor2 Reverse
+STEP 5 – Enter '0-9' for Motor2 speed 0% to 100%
+STEP 6 – Enter '#' for Apply all changes
+15
+SmartElex 30D Dual Channel DC
+Motor Driver (Powered by Raspberry Pi)
+WARRANTY
+• Standard warranty of product is 6 months.
+• No warranty will apply if the Product has been subject to misuse, static
+discharge, neglect, accident, modification, or has been soldered or altered
+in any way.
+• Warranty only applies to manufacturing defect.
+16
